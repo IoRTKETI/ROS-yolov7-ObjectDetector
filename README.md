@@ -7,11 +7,14 @@ This is a ROS package developed for **object detection in ROS topic images**. It
     </a>
 </div>
 
+**Subscribe :** Image
+
+**Publish :** bbox, Image with bbox
+
 
 ## Preferences
 we tested in
-**ROS melodic** and
-**ROS noetic** (recommand)
+**ROS melodic** and **ROS noetic** (recommand)
 
 ``` shell
 # clone to the ros catkin workspace
@@ -21,6 +24,9 @@ git clone https://github.com/IoRTKETI/ROS-yolov7-ObjectDetector
 cd ~/(your ros workspace PATH) && catkin_make
 
 ```
+
+
+
 
 ## Run
 ``` shell
@@ -37,8 +43,11 @@ rosrun yolov7 yolov7_object_detection.launch
 ```
 
 
+
 ## Use custom data
 
-add weight files : ./yolov7/scripts/classifier/yolov7_visdrone.pt
-add yaml files : ./yolov7/config/yolov7_visdrone_detection.yaml
-change python files : 
+**Add weight file :** ./yolov7/scripts/classifier/yolov7_visdrone.pt(custom file)
+
+**Add yaml file :** ./yolov7/config/yolov7_visdrone_detection.yaml(custom file)
+
+**Change yaml file path in python file :** ./yolov7/scripts/yolov7_object_detection.py
