@@ -1,4 +1,4 @@
-# ROS-yolov7_ObjectDetector
+# ROS-yolov7-ObjectDetector
 This is a ROS package developed for **object detection in ROS topic images**. It's based on yolov7 detectors and you can also use custom models if you want. The available weights are **pt files** and **trt files**.
 
 <div align="center">
