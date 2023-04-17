@@ -21,7 +21,7 @@ we tested in
 git clone https://github.com/IoRTKETI/ROS-yolov7-ObjectDetector
 
 # catkin make
-cd ~/(your ros workspace PATH) && catkin_make
+cd ~/{your ros workspace PATH} && catkin_make
 
 ```
 
@@ -37,7 +37,7 @@ If your subscribed topic is different.
 ``` shell
 # ./yolov7/scripts/yolov7_object_detection.py
 # line 29
-subscribing_image_topic = '(your subscribed topic)'
+subscribing_image_topic = '{your subscribed topic}'
 ```
 
 
