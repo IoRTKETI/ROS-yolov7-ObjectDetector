@@ -13,7 +13,7 @@ This is a ROS package developed for **object detection in ROS topic images**. It
 
 
 ## Preferences
-we tested in
+We tested in
 **ROS melodic** and **ROS noetic** (recommand).
 
 ``` shell
