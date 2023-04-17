@@ -14,7 +14,7 @@ This is a ROS package developed for **object detection in ROS topic images**. It
 
 ## Preferences
 we tested in
-**ROS melodic** and **ROS noetic** (recommand)
+**ROS melodic** and **ROS noetic** (recommand).
 
 ``` shell
 # clone to the ros catkin workspace
@@ -26,6 +26,19 @@ cd ~/(your ros workspace PATH) && catkin_make
 ```
 
 
+If you want publishing only bbox (not publishing Image with bbox).
+``` shell
+# ./yolov7/scripts/yolov7_object_detection.py
+# line 26
+self.img_pub_flag = False
+```
+
+If your subscribed topic is different.
+``` shell
+# ./yolov7/scripts/yolov7_object_detection.py
+# line 29
+subscribing_image_topic = '(your subscribed topic)'
+```
 
 
 
@@ -52,4 +65,9 @@ rosrun yolov7 yolov7_object_detection.launch
 
 **Add yaml file :** ./yolov7/config/yolov7_visdrone_detection.yaml(custom file)
 
-**Change yaml file path in python file :** ./yolov7/scripts/yolov7_object_detection.py
+**Change yaml file path in python file :**
+``` shell
+# ./yolov7/scripts/yolov7_object_detection.py
+# line 22
+self.yaml_file = 'yolov7_visdrone_detectio_detection.yaml' # (custom file)
+```
