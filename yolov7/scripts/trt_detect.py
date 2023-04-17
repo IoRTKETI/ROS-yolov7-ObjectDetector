@@ -1,9 +1,6 @@
 import cv2
 import torch
-import time
-import argparse
 from numpy import random
-import yaml
 
 from utils.trt_yolo_plugin import TRT_engine
 from utils.detect_uilts import add_camera_args, Detect, open_window
