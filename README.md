@@ -22,7 +22,7 @@ cd ~/(your ros workspace PATH) && catkin_make
 
 ```
 
-## run
+## Run
 ``` shell
 # use roslaunch
 roslaunch yolov7 yolov7_object_detection.launch
@@ -36,3 +36,9 @@ roscore
 rosrun yolov7 yolov7_object_detection.launch
 ```
 
+
+## Use custom data
+
+add weight files : ./yolov7/scripts/classifier/yolov7_visdrone.pt
+add yaml files : ./yolov7/config/yolov7_visdrone_detection.yaml
+change python files : 
