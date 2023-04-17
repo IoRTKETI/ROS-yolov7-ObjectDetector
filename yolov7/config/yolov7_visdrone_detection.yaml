@@ -1,0 +1,14 @@
+classification:
+  weights: '/scripts/classifier/yolov7_visdrone_test.trt'
+
+  names:
+    - pedestrian
+    - person
+    - car
+    - van
+    - bus
+    - truck
+    - motor
+    - bicycle
+    - awningtricycle
+    - tricycle
