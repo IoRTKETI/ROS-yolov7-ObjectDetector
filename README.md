@@ -69,5 +69,5 @@ rosrun yolov7 yolov7_object_detection.launch
 ``` shell
 # ./yolov7/scripts/yolov7_object_detection.py
 # line 22
-self.yaml_file = 'yolov7_visdrone_detectio_detection.yaml' # (custom file)
+self.yaml_file = 'yolov7_visdrone_detection.yaml' # (custom file)
 ```
