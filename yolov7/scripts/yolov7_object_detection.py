@@ -25,7 +25,7 @@ class ObjectDetection:
         # change False if you don't want publish detected image (only want bbox topic) 
         self.img_pub_flag = True
 
-        # change the camera topic if it is different
+        # change the subscribed topic if it is different
         subscribing_image_topic = '/video_source/raw'
         #subscribing_image_topic = '/drone_data/image'
 
