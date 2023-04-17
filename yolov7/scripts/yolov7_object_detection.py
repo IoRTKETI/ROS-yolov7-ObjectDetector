@@ -1,66 +1,60 @@
 #!/usr/bin/env python3
 
 import rospy
-from vision_msgs.msg import Detection2D
-from cv_bridge import CvBridge
-from sensor_msgs.msg import Image
-import cv2
-import numpy as np
-import os
 import rospkg
 import yaml
-
-import time
+from cv_bridge import CvBridge
+from sensor_msgs.msg import Image
 
 import sys
 sys.path.append('/home/fgiot-m/ros_catkin_ws/src/yolov7/scripts')
 
+from pt_detect import DETECT as PtDETECT
+from trt_detect import DETECT as TrtDETECT
 
 
 class ObjectDetection:
-    yolo = None
-    config = None
-    bridge = None
-
     def __init__(self):
-
         rospy.init_node('yolov7_object_detection_node')
-        self.time = 0
-        self.count = 0
 
         rospack = rospkg.RosPack()
         path = rospack.get_path('yolov7')
+        self.yaml_file = 'yolov7_object_detection.yaml'
+        self.path_yaml_file = f"{path}/config/{self.yaml_file}"
+
+        # change False if you don't want publish detected image (only want bbox topic) 
         self.img_pub_flag = True
 
+        # change the camera topic if it is different
+        subscribing_image_topic = '/video_source/raw'
+        #subscribing_image_topic = '/drone_data/image'
+
+
         # Load config
-        with open(path + "/config/yolov7_object_detection.yaml") as f:
+        with open(self.path_yaml_file) as f:
             self.config = yaml.full_load(f)
 
         weight_path = self.config['classification']['weights']
         if weight_path.endswith('.pt'):
-            from pt_detect import DETECT
-            self.detect = DETECT(path+weight_path
+            print('\nLoading pt model...')
+ 
+            self.detect = PtDETECT(f"{path}/{weight_path}"
                                 ,self.img_pub_flag)
-            print('\nLoad weights file : ',weight_path)
-            print('\nLoad pt model...')
 
         elif weight_path.endswith('.trt'):
-            from trt_detect import DETECT
-            self.detect = DETECT(path+weight_path
+            print('\nLoading trt model...')
+            self.detect = TrtDETECT(f"{path}/{weight_path}"
                                 ,self.config['classification']['names']
                                 ,self.img_pub_flag)
-            print('\nLoad weights file : ', weight_path)
-            print('\nLoad trt model...')
 
         else:
-            print('error : Please write weights path in yaml file')
+            print('Error : Please write weights path in yaml file')
             exit()
-
+            
+        print('\nLoad weights file : ', weight_path)
         self.bridge = CvBridge()
 
-        #change the camera topic if it is different
-        rospy.Subscriber('/video_source/raw', Image, self.classify)
-        #rospy.Subscriber('/drone_data/image',Image, self.classify)
+        rospy.Subscriber(subscribing_image_topic, Image, self.classify)
         rospy.spin()
 
     def classify(self, image):
