@@ -7,11 +7,14 @@ This is a ROS package developed for **object detection in ROS topic images**. It
     </a>
 </div>
 
-**Subscribe (type):**
+**Subscribe topic (type):**
+
 Image (sensor_msgs/Image)
 
-**Publish :**
-bbox (yolov7/Setector2DArray)
+**Publish topic (type):**
+
+bbox (yolov7/Detector2DArray)
+
 Image with bbox (sensor_msgs/Image)
 
 
