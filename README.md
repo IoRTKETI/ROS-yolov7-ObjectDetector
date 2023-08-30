@@ -60,7 +60,7 @@ or
 roscore
 
 # another terminal
-rosrun yolov7 yolov7_object_detection.launch
+rosrun yolov7 yolov7_object_detection.py
 ```
 
 
